@@ -4,7 +4,7 @@
  * Each click: random animal + random message (won’t repeat the same line or speaker twice in a row).
  */
 const AUTH_KEY = "forSalynaUnlocked";
-const PASSWORD = "salyna";
+const PASSWORD = "nala";
 
 const gateScreen = document.getElementById("gate-screen");
 const appContent = document.getElementById("app-content");
