@@ -78,9 +78,18 @@ body {
 }
 
 .gate-lede {
-  margin: 0 0 1.1rem;
+  margin: 0 0 0.65rem;
   font-size: 1rem;
   color: var(--muted);
+}
+
+.gate-hint {
+  margin: 0 0 1.15rem;
+  font-size: 0.88rem;
+  line-height: 1.45;
+  font-weight: 600;
+  color: var(--muted);
+  opacity: 0.92;
 }
 
 .gate-form {
@@ -454,9 +463,9 @@ button.critter:focus-visible {
   display: block;
 }
 
-/* Chubby Polly */
+/* Polly: slight chubby, less wide than old “ball” penguin */
 .critter--polly .critter-face {
-  transform: scaleX(1.12) scaleY(1.02);
+  transform: scaleX(1.04) scaleY(1.06);
 }
 
 /* Round, bouncy Pongu */
@@ -506,15 +515,15 @@ button.critter:focus-visible {
 
 @keyframes critter-boop-polly {
   0% {
-    transform: scaleX(1.12) scaleY(1.02);
+    transform: scaleX(1.04) scaleY(1.06);
   }
 
   40% {
-    transform: scaleX(1.18) scaleY(1.06);
+    transform: scaleX(1.1) scaleY(1.1);
   }
 
   100% {
-    transform: scaleX(1.12) scaleY(1.02);
+    transform: scaleX(1.04) scaleY(1.06);
   }
 }
 
@@ -578,10 +587,10 @@ button.critter:focus-visible {
 @keyframes polly-waddle {
   0%,
   100% {
-    transform: scaleX(1.12) scaleY(1.02) rotate(0deg);
+    transform: scaleX(1.04) scaleY(1.06) rotate(0deg);
   }
   50% {
-    transform: scaleX(1.14) scaleY(1.03) rotate(-2deg);
+    transform: scaleX(1.06) scaleY(1.08) rotate(-2deg);
   }
 }
 
@@ -648,7 +657,7 @@ button.critter:focus-visible {
   }
 
   .critter--polly .critter-face {
-    transform: scaleX(1.12) scaleY(1.02);
+    transform: scaleX(1.04) scaleY(1.06);
   }
 
   .critter--pongu .critter-face {
@@ -789,6 +798,16 @@ button.critter:focus-visible {
 
 .foot p {
   margin: 0;
+}
+
+.foot-made {
+  margin-top: 0.55rem;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--border-soft);
+  opacity: 0.95;
 }
 
 .visually-hidden {

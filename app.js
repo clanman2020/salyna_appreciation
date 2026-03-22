@@ -1,7 +1,7 @@
 /**
  * Client-side gate only — fine for a sweet surprise, not for real secrets.
  * Add more reasons anytime — keep them short and sweet.
- * Each click: next animal speaks + next message (wraps around).
+ * Each click: random animal + random message (won’t repeat the same line or speaker twice in a row).
  */
 const AUTH_KEY = "forSalynaUnlocked";
 const PASSWORD = "salyna";
@@ -12,14 +12,34 @@ const gateForm = document.getElementById("gate-form");
 const gatePassword = document.getElementById("gate-password");
 const gateError = document.getElementById("gate-error");
 
+function scrollMainIntoView() {
+  const main = document.getElementById("love-note-main");
+  if (!main) return;
+  const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  main.scrollIntoView({ behavior: reduce ? "auto" : "smooth", block: "start" });
+}
+
 function unlockApp() {
   sessionStorage.setItem(AUTH_KEY, "1");
   gateScreen.hidden = true;
   appContent.hidden = false;
   gateError.textContent = "";
-  const cta = document.getElementById("next-btn");
-  if (cta) cta.focus();
-  requestAnimationFrame(() => alignBubbleTail());
+  requestAnimationFrame(() => {
+    scrollMainIntoView();
+    requestAnimationFrame(() => {
+      alignBubbleTail();
+      const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+      const cta = document.getElementById("next-btn");
+      if (cta) {
+        window.setTimeout(
+          () => {
+            cta.focus({ preventScroll: true });
+          },
+          reduce ? 0 : 420,
+        );
+      }
+    });
+  });
 }
 
 function checkAuth() {
@@ -88,8 +108,20 @@ const critterReactionEl = document.getElementById("critter-reaction");
 const btn = document.getElementById("next-btn");
 const critters = document.querySelectorAll(".critter");
 
-let step = 0;
+let lastSpeakerIdx = -1;
+let lastMsgIdx = -1;
 let boopTimeoutId = 0;
+
+function randomIndexExcluding(length, exclude) {
+  if (length <= 1) return 0;
+  let i;
+  let guard = 0;
+  do {
+    i = Math.floor(Math.random() * length);
+    guard += 1;
+  } while (i === exclude && guard < 32);
+  return i;
+}
 
 function prefersReducedMotion() {
   return window.matchMedia("(prefers-reduced-motion: reduce)").matches;
@@ -164,8 +196,7 @@ critters.forEach((critterBtn) => {
 });
 
 btn.addEventListener("click", () => {
-  showStep(step);
-  step += 1;
+  showRandomNote();
 });
 
 let bubbleTailResizeTimer = 0;
