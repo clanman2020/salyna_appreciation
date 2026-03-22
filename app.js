@@ -19,6 +19,7 @@ function unlockApp() {
   gateError.textContent = "";
   const cta = document.getElementById("next-btn");
   if (cta) cta.focus();
+  requestAnimationFrame(() => alignBubbleTail());
 }
 
 function checkAuth() {
@@ -100,6 +101,21 @@ function triggerBubblePop() {
   bubbleEl.addEventListener("animationend", onEnd, { once: true });
 }
 
+function alignBubbleTail() {
+  if (!bubbleEl) return;
+  const active = document.querySelector(".critter.is-active");
+  if (!active) {
+    bubbleEl.style.setProperty("--bubble-tail-pct", "50%");
+    return;
+  }
+  const br = bubbleEl.getBoundingClientRect();
+  const ar = active.getBoundingClientRect();
+  const cx = ar.left + ar.width / 2;
+  let pct = ((cx - br.left) / br.width) * 100;
+  pct = Math.min(92, Math.max(8, pct));
+  bubbleEl.style.setProperty("--bubble-tail-pct", `${pct}%`);
+}
+
 function setActiveCritter(id) {
   critters.forEach((el) => {
     el.classList.toggle("is-active", el.dataset.critter === id);
@@ -138,3 +154,16 @@ btn.addEventListener("click", () => {
   showStep(step);
   step += 1;
 });
+
+let bubbleTailResizeTimer = 0;
+window.addEventListener("resize", () => {
+  clearTimeout(bubbleTailResizeTimer);
+  bubbleTailResizeTimer = window.setTimeout(alignBubbleTail, 100);
+});
+
+if (sessionStorage.getItem(AUTH_KEY) === "1") {
+  requestAnimationFrame(() => {
+    alignBubbleTail();
+    requestAnimationFrame(alignBubbleTail);
+  });
+}
