@@ -169,9 +169,13 @@ function setActiveCritter(id) {
   });
 }
 
-function showStep(index) {
-  const speaker = SPEAKERS[index % SPEAKERS.length];
-  const text = MESSAGES[index % MESSAGES.length];
+function showRandomNote() {
+  const si = randomIndexExcluding(SPEAKERS.length, lastSpeakerIdx);
+  const mi = randomIndexExcluding(MESSAGES.length, lastMsgIdx);
+  lastSpeakerIdx = si;
+  lastMsgIdx = mi;
+  const speaker = SPEAKERS[si];
+  const text = MESSAGES[mi];
   speakerEl.textContent = speaker.label;
   messageEl.textContent = text;
   setActiveCritter(speaker.id);
@@ -195,9 +199,11 @@ critters.forEach((critterBtn) => {
   });
 });
 
-btn.addEventListener("click", () => {
-  showRandomNote();
-});
+if (btn) {
+  btn.addEventListener("click", () => {
+    showRandomNote();
+  });
+}
 
 let bubbleTailResizeTimer = 0;
 window.addEventListener("resize", () => {
