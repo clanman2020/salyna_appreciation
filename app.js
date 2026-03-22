@@ -1,24 +1,69 @@
 /**
+ * Client-side gate only — fine for a sweet surprise, not for real secrets.
  * Add more reasons anytime — keep them short and sweet.
  * Each click: next animal speaks + next message (wraps around).
  */
+const AUTH_KEY = "forSalynaUnlocked";
+const PASSWORD = "salyna";
+
+const gateScreen = document.getElementById("gate-screen");
+const appContent = document.getElementById("app-content");
+const gateForm = document.getElementById("gate-form");
+const gatePassword = document.getElementById("gate-password");
+const gateError = document.getElementById("gate-error");
+
+function unlockApp() {
+  sessionStorage.setItem(AUTH_KEY, "1");
+  gateScreen.hidden = true;
+  appContent.hidden = false;
+  gateError.textContent = "";
+  const cta = document.getElementById("next-btn");
+  if (cta) cta.focus();
+}
+
+function checkAuth() {
+  if (sessionStorage.getItem(AUTH_KEY) === "1") {
+    gateScreen.hidden = true;
+    appContent.hidden = false;
+    return true;
+  }
+  gateScreen.hidden = false;
+  appContent.hidden = true;
+  gatePassword.focus();
+  return false;
+}
+
+gateForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  gateError.textContent = "";
+  const value = gatePassword.value.trim().toLowerCase();
+  if (value === PASSWORD) {
+    unlockApp();
+    gatePassword.value = "";
+  } else {
+    gateError.textContent = "Not quite — try again, love.";
+    gatePassword.select();
+  }
+});
+
+checkAuth();
+
 const MESSAGES = [
-  "Salyna, your laugh is my favorite sound in the whole world.",
-  "Salyna, you make ordinary days feel like a holiday.",
-  "Salyna, you’re the kindest person I know — and the cutest, honestly.",
-  "Salyna, I love how your brain works; you’re brilliant and curious.",
-  "Salyna, you’re my home. Wherever you are, I want to be.",
-  "Salyna, your strength inspires me more than you know.",
-  "Salyna, you’re ridiculously easy to adore.",
-  "Salyna, thank you for being patient with me — I notice it.",
-  "Salyna, you’re beautiful inside and out, today and every day.",
-  "Salyna, I’m so proud to be yours.",
+  "Salyna, I love that you always support me.",
+  "Salyna, you are the kindest, most compassionate person I know.",
+  "Salyna, you are sexxxxxxxy ;)",
+  "Salyna, I love your smile.",
+  "Salyna, you do so many little things for me that make my day.",
+  "Salyna, you constantly remind me why I love you with all the things that you do.",
+  "Salyna, you make my hard days less hard.",
+  "Salyna, I'm so grateful for you. Your warmth, your love, your steadiness.",
+  "Salyna, I notice the effort you put in, and it means more than you know.",
 ];
 
 const SPEAKERS = [
-  { id: "penguin", label: "Pip the Penguin says…" },
-  { id: "panda", label: "Pandi the Panda says…" },
-  { id: "chow", label: "Cinnamon the Chow Chow says…" },
+  { id: "penguin", label: "Polly the Penguin says…" },
+  { id: "panda", label: "Pongu the Panda says…" },
+  { id: "chow", label: "Nala the fluffy Chow Chow says…" },
 ];
 
 const messageEl = document.getElementById("message-text");

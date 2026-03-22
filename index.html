@@ -16,28 +16,106 @@
   <body>
     <div class="bg-pattern" aria-hidden="true"></div>
 
+    <div id="gate-screen" class="gate-screen">
+      <div class="gate-card" role="dialog" aria-modal="true" aria-labelledby="gate-title">
+        <p class="eyebrow">Shh — it’s private</p>
+        <h1 id="gate-title">For Salyna only</h1>
+        <p class="gate-lede">Enter the secret word to see your fan club.</p>
+        <form id="gate-form" class="gate-form" novalidate>
+          <label class="gate-label" for="gate-password">Secret word</label>
+          <input
+            id="gate-password"
+            class="gate-input"
+            type="password"
+            name="password"
+            autocomplete="current-password"
+            required
+            maxlength="64"
+          />
+          <p id="gate-error" class="gate-error" role="status" aria-live="polite"></p>
+          <button type="submit" class="cta gate-submit">Open the love note</button>
+        </form>
+      </div>
+    </div>
+
+    <div id="app-content" class="app-content" hidden>
     <main class="shell">
       <header class="hero">
         <p class="eyebrow">Made with love</p>
         <h1>Hey, Salyna</h1>
-        <p class="lede">Your personal fan club has three very fluffy members. Tap the button and they’ll take turns telling you the truth.</p>
+        <p class="lede">Tap the button and they’ll take turns telling you why Curtis loves you.</p>
       </header>
 
       <section class="stage" aria-labelledby="stage-heading">
         <h2 id="stage-heading" class="visually-hidden">Message from a friend</h2>
 
         <div class="critter-row" aria-hidden="true">
-          <div class="critter" data-critter="penguin" title="Pip the Penguin">
-            <span class="critter-face" aria-hidden="true">🐧</span>
-            <span class="critter-name">Pip</span>
+          <div class="critter critter--polly" data-critter="penguin" title="Polly the Penguin">
+            <div class="critter-face critter-face--polly" aria-hidden="true">
+              <svg class="critter-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <ellipse cx="38" cy="89" rx="11" ry="6.5" fill="#f4a040" />
+                <ellipse cx="62" cy="89" rx="11" ry="6.5" fill="#f4a040" />
+                <ellipse cx="50" cy="54" rx="44" ry="38" fill="#252540" />
+                <ellipse cx="50" cy="60" rx="30" ry="27" fill="#f7f7ff" />
+                <ellipse cx="50" cy="36" rx="32" ry="30" fill="#f7f7ff" />
+                <circle cx="27" cy="40" r="9" fill="#ffb8ce" opacity="0.9" />
+                <circle cx="73" cy="40" r="9" fill="#ffb8ce" opacity="0.9" />
+                <circle cx="40" cy="34" r="7" fill="#fff" />
+                <circle cx="60" cy="34" r="7" fill="#fff" />
+                <circle cx="41" cy="35" r="3.5" fill="#252540" />
+                <circle cx="61" cy="35" r="3.5" fill="#252540" />
+                <circle cx="39" cy="33" r="1.2" fill="#fff" />
+                <circle cx="59" cy="33" r="1.2" fill="#fff" />
+                <path d="M50 42 L45 52 L55 52 Z" fill="#f4a040" />
+              </svg>
+            </div>
+            <span class="critter-name">Polly</span>
           </div>
-          <div class="critter" data-critter="panda" title="Pandi the Panda">
-            <span class="critter-face" aria-hidden="true">🐼</span>
-            <span class="critter-name">Pandi</span>
+          <div class="critter critter--pongu" data-critter="panda" title="Pongu the Panda">
+            <div class="critter-face critter-face--pongu" aria-hidden="true">
+              <svg class="critter-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="22" cy="26" r="15" fill="#1a1a1a" />
+                <circle cx="78" cy="26" r="15" fill="#1a1a1a" />
+                <circle cx="22" cy="26" r="6" fill="#f3e8ec" />
+                <circle cx="78" cy="26" r="6" fill="#f3e8ec" />
+                <circle cx="50" cy="50" r="40" fill="#fff" />
+                <ellipse cx="34" cy="46" rx="15" ry="18" fill="#1a1a1a" />
+                <ellipse cx="66" cy="46" rx="15" ry="18" fill="#1a1a1a" />
+                <ellipse cx="34" cy="44" rx="6" ry="8" fill="#fff" />
+                <ellipse cx="66" cy="44" rx="6" ry="8" fill="#fff" />
+                <ellipse cx="34" cy="45" rx="3" ry="5" fill="#1a1a1a" />
+                <ellipse cx="66" cy="45" rx="3" ry="5" fill="#1a1a1a" />
+                <ellipse cx="50" cy="56" rx="9" ry="7" fill="#1a1a1a" />
+                <circle cx="32" cy="52" r="5" fill="#ffb8ce" opacity="0.85" />
+                <circle cx="68" cy="52" r="5" fill="#ffb8ce" opacity="0.85" />
+                <path d="M43 62 Q50 68 57 62" stroke="#1a1a1a" stroke-width="2.2" fill="none" stroke-linecap="round" />
+              </svg>
+            </div>
+            <span class="critter-name">Pongu</span>
           </div>
-          <div class="critter" data-critter="chow" title="Cinnamon the Chow Chow">
-            <span class="critter-face" aria-hidden="true">🐕</span>
-            <span class="critter-name">Cinnamon</span>
+          <div class="critter critter--nala" data-critter="chow" title="Nala the Chow Chow">
+            <div class="critter-face critter-face--nala" aria-hidden="true">
+              <svg class="critter-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
+                <circle cx="50" cy="50" r="38" fill="#b8956a" opacity="0.55" />
+                <circle cx="26" cy="48" r="20" fill="#c9a97a" opacity="0.9" />
+                <circle cx="74" cy="48" r="20" fill="#c9a97a" opacity="0.9" />
+                <circle cx="50" cy="24" r="22" fill="#d4b48a" opacity="0.95" />
+                <circle cx="28" cy="28" r="16" fill="#c4a574" opacity="0.9" />
+                <circle cx="72" cy="28" r="16" fill="#c4a574" opacity="0.9" />
+                <circle cx="22" cy="64" r="15" fill="#b8956a" opacity="0.85" />
+                <circle cx="78" cy="64" r="15" fill="#b8956a" opacity="0.85" />
+                <circle cx="50" cy="70" r="14" fill="#d4b48a" opacity="0.75" />
+                <circle cx="50" cy="54" r="24" fill="#e8cfae" />
+                <ellipse cx="50" cy="58" rx="13" ry="11" fill="#d9bc9a" />
+                <ellipse cx="50" cy="55" rx="5" ry="4" fill="#3d3554" />
+                <ellipse cx="41" cy="48" rx="4.5" ry="5.5" fill="#3d3554" />
+                <ellipse cx="59" cy="48" rx="4.5" ry="5.5" fill="#3d3554" />
+                <ellipse cx="42" cy="47" rx="1.6" ry="2" fill="#fff" opacity="0.9" />
+                <ellipse cx="60" cy="47" rx="1.6" ry="2" fill="#fff" opacity="0.9" />
+                <path d="M44 64 Q50 69 56 64" stroke="#a08060" stroke-width="1.8" fill="none" stroke-linecap="round" />
+              </svg>
+            </div>
+            <span class="critter-name">Nala</span>
           </div>
         </div>
 
@@ -55,6 +133,7 @@
         <p>You’re loved. Always.</p>
       </footer>
     </main>
+    </div>
 
     <script src="app.js" defer></script>
   </body>
