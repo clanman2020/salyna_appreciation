@@ -62,6 +62,11 @@ const MESSAGES = [
   "Salyna, you are stunning. I don't know how I got so lucky!",
   "Salyna, your kindness shows up in the small moments, and those moments stack into something huge in my life.",
   "Salyna, you remember the details that everyone else forgets, and that makes me feel unbelievably cared for.",
+  "Salyna, you're the most beautiful girl I've ever seen.",
+  "Salyna, you're my biggest cheerleader, and I love you so much for it.",
+  "Salyna, your kindness isn't just for show. It's who you are, and I love that about you.",
+  "Salyna, home is wherever I am with you.",
+  "Salyna, you are my forever travel partner :)",
 ];
 
 const SPEAKERS = [
