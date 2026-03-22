@@ -49,8 +49,13 @@
       <section class="stage" aria-labelledby="stage-heading">
         <h2 id="stage-heading" class="visually-hidden">Message from a friend</h2>
 
-        <div class="critter-row" aria-hidden="true">
-          <div class="critter critter--polly" data-critter="penguin" title="Polly the Penguin">
+        <div class="critter-row" role="group" aria-label="Polly, Pongu, and Nala — tap for a tiny hello">
+          <button
+            type="button"
+            class="critter critter--polly"
+            data-critter="penguin"
+            aria-label="Polly the Penguin — tap for a tiny hello"
+          >
             <div class="critter-face critter-face--polly" aria-hidden="true">
               <svg class="critter-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                 <ellipse cx="38" cy="89" rx="11" ry="6.5" fill="#f4a040" />
@@ -70,8 +75,13 @@
               </svg>
             </div>
             <span class="critter-name">Polly</span>
-          </div>
-          <div class="critter critter--pongu" data-critter="panda" title="Pongu the Panda">
+          </button>
+          <button
+            type="button"
+            class="critter critter--pongu"
+            data-critter="panda"
+            aria-label="Pongu the Panda — tap for a tiny hello"
+          >
             <div class="critter-face critter-face--pongu" aria-hidden="true">
               <svg class="critter-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="22" cy="26" r="15" fill="#1a1a1a" />
@@ -92,8 +102,13 @@
               </svg>
             </div>
             <span class="critter-name">Pongu</span>
-          </div>
-          <div class="critter critter--nala" data-critter="chow" title="Nala the Chow Chow">
+          </button>
+          <button
+            type="button"
+            class="critter critter--nala"
+            data-critter="chow"
+            aria-label="Nala the Chow Chow — tap for a tiny hello"
+          >
             <div class="critter-face critter-face--nala" aria-hidden="true">
               <svg class="critter-svg" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg">
                 <circle cx="50" cy="50" r="38" fill="#b8956a" opacity="0.55" />
@@ -116,12 +131,14 @@
               </svg>
             </div>
             <span class="critter-name">Nala</span>
-          </div>
+          </button>
         </div>
+
+        <p id="critter-reaction" class="critter-reaction" aria-live="polite" aria-atomic="true"></p>
 
         <div class="bubble-wrap" aria-live="polite" aria-atomic="true">
           <p class="speaker" id="speaker-label"></p>
-          <div class="bubble">
+          <div class="bubble" id="message-bubble">
             <p id="message-text" class="message">Ready when you are — tap the button for the first reason you’re amazing.</p>
           </div>
         </div>
