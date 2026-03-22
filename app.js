@@ -108,8 +108,11 @@ function alignBubbleTail() {
     bubbleEl.style.setProperty("--bubble-tail-pct", "50%");
     return;
   }
+  const face = active.querySelector(".critter-face");
+  const target = face || active;
   const br = bubbleEl.getBoundingClientRect();
-  const ar = active.getBoundingClientRect();
+  const ar = target.getBoundingClientRect();
+  if (br.width <= 0) return;
   const cx = ar.left + ar.width / 2;
   let pct = ((cx - br.left) / br.width) * 100;
   pct = Math.min(92, Math.max(8, pct));
@@ -123,6 +126,10 @@ function setActiveCritter(id) {
   });
   if (critterReactionEl) critterReactionEl.textContent = "";
   clearTimeout(boopTimeoutId);
+  requestAnimationFrame(() => {
+    alignBubbleTail();
+    requestAnimationFrame(alignBubbleTail);
+  });
 }
 
 function showStep(index) {
@@ -132,6 +139,7 @@ function showStep(index) {
   messageEl.textContent = text;
   setActiveCritter(speaker.id);
   triggerBubblePop();
+  window.setTimeout(alignBubbleTail, 0);
 }
 
 critters.forEach((critterBtn) => {
