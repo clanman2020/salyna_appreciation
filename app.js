@@ -87,6 +87,7 @@ const MESSAGES = [
   "Salyna, your kindness isn't just for show. It's who you are, and I love that about you.",
   "Salyna, home is wherever I am with you.",
   "Salyna, you are my forever travel partner :)",
+  "Salyna, I love that you love Pumba and Nala as much as I do.",
 ];
 
 const SPEAKERS = [
