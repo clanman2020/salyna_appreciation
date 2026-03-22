@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="A little site for Salyna — penguins, pandas, and chow chows say why she's loved." />
+    <title>For Salyna</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Quicksand:wght@500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <div class="bg-pattern" aria-hidden="true"></div>
+
+    <main class="shell">
+      <header class="hero">
+        <p class="eyebrow">Made with love</p>
+        <h1>Hey, Salyna</h1>
+        <p class="lede">Your personal fan club has three very fluffy members. Tap the button and they’ll take turns telling you the truth.</p>
+      </header>
+
+      <section class="stage" aria-labelledby="stage-heading">
+        <h2 id="stage-heading" class="visually-hidden">Message from a friend</h2>
+
+        <div class="critter-row" aria-hidden="true">
+          <div class="critter" data-critter="penguin" title="Pip the Penguin">
+            <span class="critter-face" aria-hidden="true">🐧</span>
+            <span class="critter-name">Pip</span>
+          </div>
+          <div class="critter" data-critter="panda" title="Pandi the Panda">
+            <span class="critter-face" aria-hidden="true">🐼</span>
+            <span class="critter-name">Pandi</span>
+          </div>
+          <div class="critter" data-critter="chow" title="Cinnamon the Chow Chow">
+            <span class="critter-face" aria-hidden="true">🐕</span>
+            <span class="critter-name">Cinnamon</span>
+          </div>
+        </div>
+
+        <div class="bubble-wrap" aria-live="polite" aria-atomic="true">
+          <p class="speaker" id="speaker-label"></p>
+          <div class="bubble">
+            <p id="message-text" class="message">Ready when you are — tap the button for the first reason you’re amazing.</p>
+          </div>
+        </div>
+
+        <button type="button" class="cta" id="next-btn">Another reason</button>
+      </section>
+
+      <footer class="foot">
+        <p>You’re loved. Always.</p>
+      </footer>
+    </main>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
